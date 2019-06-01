@@ -1,4 +1,4 @@
-<div>
+<div class="text-center">
     <a class="btn btn-success btn-share" href="<?php echo ROOT_PATH; ?>shares/add">Share something</a>
 
     <?php foreach($viewmodel as $item) : ?>
