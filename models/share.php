@@ -20,7 +20,7 @@ class ShareModel extends Model{
 			$this->execute();
 
 			if($this->lastInsertId()){
-				header('Location'. ROOT_URL. 'shares');
+				header('Location: '. ROOT_URL. 'shares');
 			}
 		}
 		return;
