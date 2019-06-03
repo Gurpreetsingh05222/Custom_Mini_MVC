@@ -32,10 +32,19 @@ class UserModel extends Model{
 			$this->query('SELECT * FROM users WHERE email = :email AND password = :password');
 			$this->bind(':email', $post['email']);
 			$this->bind(':password', $password);
-			$this->execute();
 
-			if($this->lastInsertId()){
-				header('Location: '. ROOT_URL. 'users/login');
+			$row = $this->single();
+
+			if($row){
+				$_SESSION['is_logged_in'] = true;
+				$_SESSION['user_data'] = array(
+					"id" => $row['id'], 
+					"name" => $row['name'],
+					"email" => $row['email']
+			);
+				header('Location: '. ROOT_URL. 'shares');
+			}else{
+				echo 'incorect login';
 			}
 		}
 		return;
